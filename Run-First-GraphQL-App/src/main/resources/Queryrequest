@@ -1,0 +1,145 @@
+Sample Request :
+
+query {
+  fullNameJSON (sampleRequest : {
+    firstName : "Saurabh"
+    lastName : "Awasthi"
+    address : {
+      city :"kanpur"
+      state : "UP"
+    }
+  })
+  firstQuery
+  secondQuery
+  thirdQuery
+}
+
+Sample Request :
+query {
+  student (id : 1) {
+    // response variable
+    id
+    firstName
+    lastName
+    email
+    city
+    street
+  }
+}
+
+Sample Request :
+
+query {
+  student (id : 1) {
+    id
+    firstName
+    lastName
+    email
+    city
+    street
+    learningSubjects {
+      id
+      marksObtained
+      subjectName
+    }
+  }
+
+}
+
+Sample Request :
+
+query {
+  student (id : 1) {
+    firstName
+    fullName
+    totalMarks
+    learningSubjects {
+      id
+      marksObtained
+      subjectName
+    }
+  }
+
+}
+
+Sample Request :
+
+query {
+  student (id : 3) {
+    firstName
+    fullName
+    totalMarks
+    learningSubjects {
+      id
+      marksObtained
+      subjectName
+    }
+    filterSubjects (filter : All){
+      subjectName
+    }
+  }
+
+}
+
+Sample Request with GraphQL Varibale :
+query  student($id : Float){
+  student (id : $id) {
+    firstName
+    fullName
+    totalMarks
+    learningSubjects {
+      id
+      marksObtained
+      subjectName
+    }
+    filterSubjects (filter : All){
+      subjectName
+    }
+  }
+
+}
+
+Variable :
+
+{
+  "id" : 5
+}
+
+Sample Request with GraphQL Variable with multiple input :
+
+query  student($id : Float, $filter : SubjectName){
+  student (id : $id) {
+    firstName
+    fullName
+    totalMarks
+    learningSubjects {
+      id
+      marksObtained
+      subjectName
+    }
+    filterSubjects (filter : $filter){
+      subjectName
+    }
+  }
+
+}
+
+VARIABLES :
+
+{
+  "id" : 6,
+  "filter" : "Java"
+}
+
+
+Links :
+
+localHost URL browser: http://localhost:8080/graphiql
+
+altiar extension (chrome-extension://flnheeellpciglgpaodhkhmapeljopja/index.html) : http://localhost:8080/graphql
+
+link to read: https://blog.devgenius.io/graphql-with-spring-boot-starter-graphql-7b406998c0b5
+
+link to read : https://github.com/dhakre/APIBook/tree/489e4e33d3703a714b5107f6c052ab84c7c8e8e2
+
+spring doc : https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.web.spring.graphql.graphiql.path

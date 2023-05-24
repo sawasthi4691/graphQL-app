@@ -1,0 +1,126 @@
+Sample Request
+mutation {
+  createStudent ( createStudentRequest : {
+    firstName : "John"
+    lastName : "Cena"
+    city : "Boston"
+    street : "Boston Street"
+    email : "JohnCena@gmail.com"
+    subjectsLearning : [
+      {
+        subjectName : "Java"
+        marksObtained : 70.00
+      },
+      {
+        subjectName : "MySQL"
+        marksObtained : 80.00
+      }
+    ]
+  }) {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects {
+      id
+      subjectName
+      marksObtained
+    }
+    filterSubjects(filter: All) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+    totalMarks
+  }
+}
+
+Sample Response :
+{
+  "data": {
+    "createStudent": {
+      "id": 5,
+      "firstName": "John",
+      "lastName": "Cena",
+      "email": "JohnCena@gmail.com",
+      "street": "Boston Street",
+      "city": "Boston",
+      "learningSubjects": [
+        {
+          "id": "10",
+          "subjectName": "Java",
+          "marksObtained": 70
+        },
+        {
+          "id": "11",
+          "subjectName": "MySQL",
+          "marksObtained": 80
+        }
+      ],
+      "filterSubjects": [
+        {
+          "id": "10",
+          "subjectName": "Java",
+          "marksObtained": 70
+        },
+        {
+          "id": "11",
+          "subjectName": "MySQL",
+          "marksObtained": 80
+        }
+      ],
+      "fullName": "John Cena",
+      "totalMarks": 150
+    }
+  }
+}
+
+Sample Request with GraphQL Variable  :
+mutation createStudent( $createStudentRequest : CreateStudentRequest) {
+  createStudent ( createStudentRequest :
+      $createStudentRequest
+  ) {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects {
+      id
+      subjectName
+      marksObtained
+    }
+    filterSubjects(filter: All) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+    totalMarks
+  }
+}
+
+variable :
+{
+  "createStudentRequest" : {
+  	"firstName" : "Rock",
+    "lastName" : "Cena",
+    "city" : "Boston",
+    "street" : "Boston Street",
+    "email" : "JohnCena@gmail.com",
+    "subjectsLearning" : [
+      {
+        "subjectName" : "Java",
+        "marksObtained" : 70.00
+      },
+      {
+        "subjectName" : "MySQL",
+        "marksObtained" : 80.00
+      }
+    ]
+	}
+}

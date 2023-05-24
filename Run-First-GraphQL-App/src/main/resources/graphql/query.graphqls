@@ -1,0 +1,45 @@
+type Query {
+	firstQuery : String
+	secondQuery : String
+	thirdQuery : Int
+	fullName (fName : String , lName : String) : String
+	fullNameJSON (sampleRequest : SampleRequest) : String
+	student(id : Float) : StudentResponse
+}
+
+input SampleRequest {
+	firstName : String
+	lastName : String
+	address : Address
+}
+
+input Address {
+	city : String!
+	state : String
+}
+
+type StudentResponse {
+	id : Float
+	firstName : String
+	lastName : String
+	email : String
+	street : String
+	city : String
+	learningSubjects : [SubjectResponse]
+	filterSubjects (filter : SubjectName ) : [SubjectResponse]
+	fullName : String
+	totalMarks : Float
+}
+
+enum SubjectName {
+	All,
+	Java,
+	MySQL,
+	MongoDB
+}
+
+type SubjectResponse {
+	id : String
+	subjectName : String
+	marksObtained : Float
+}
